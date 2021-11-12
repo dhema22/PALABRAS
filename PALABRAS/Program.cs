@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PALABRAS
 {
     class Program
     {
-        private static char b;
-
         static void Main()
         {
             MayusculaMinuscula();
@@ -61,7 +60,15 @@ namespace PALABRAS
             Console.Write("Ingrese palabra para añadir espacios:");
             añade = Console.ReadLine();
             longitud = añade.Length;
-            Console.WriteLine(añade.Replace(añade.Substring(0,longitud), " "));
+            List<string> caracters = new List<string>();
+            for (int i = 0; i < añade.Length; i++)
+            {
+                caracters.Add(añade.Substring(i, 1));
+            }
+
+            String[] str = caracters.ToArray();
+            var readablePhrase = string.Join(" ", str);
+            Console.WriteLine(readablePhrase);
         }
     }
 
@@ -73,4 +80,9 @@ namespace PALABRAS
     //    espacio.Add(añadeespacio);
     //}
     //espacio.ForEach(i => Console.WriteLine("{0}", i));
+
+    //buscar que hace y como funciona bien.
+    //separado = añade.Split(" ");
+    //separado[i] = " ";
+    //añade = string.Join(" ", longitud);
 }
